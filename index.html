@@ -28,6 +28,26 @@
 </head>
 
 <body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+var socket = io();
+
+var sendName = {
+	"name": location.hash,
+	"type": "client"
+};
+console.log("Sending name", sendName);
+socket.emit('name', sendName);
+
+socket.on('heartbeat', function(msg){
+	console.log(msg);
+});
+
+</script>
+
+
 	<div class="menuItem" onclick="startGame()">
 		<p class="menuText">Start</p>
 	</div>
